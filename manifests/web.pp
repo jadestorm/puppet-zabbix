@@ -342,7 +342,7 @@ class zabbix::web (
 
       case $zabbix_version {
         '5.0': {
-          if $facts['os']['family'] == 'RedHat' and $facts['os']['version']['major'] == 7 {
+          if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == 7 {
             $zabbix_web_db_package = "zabbix-web-${db}-scl"
           }
           else {
