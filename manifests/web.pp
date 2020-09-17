@@ -215,6 +215,7 @@ class zabbix::web (
   $database_password                                                  = $zabbix::params::server_database_password,
   $database_socket                                                    = $zabbix::params::server_database_socket,
   $database_port                                                      = $zabbix::params::server_database_port,
+  $database_double_support                                            = $zabbix::params::server_database_double_support,
   $zabbix_server                                                      = $zabbix::params::zabbix_server,
   Optional[String] $zabbix_server_name                                = $zabbix::params::zabbix_server,
   $zabbix_listenport                                                  = $zabbix::params::server_listenport,
