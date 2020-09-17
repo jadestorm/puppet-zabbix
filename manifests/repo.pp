@@ -79,6 +79,17 @@ class zabbix::repo (
           priority => '1',
         }
 
+        if $zabbix_version == '5.0' {
+          yumrepo { 'zabbix-frontend':
+            name     => "Zabbix_frontend_${majorrelease}_${facts['os']['architecture']}",
+            descr    => "Zabbix_frontend_${majorrelease}_${facts['os']['architecture']}",
+            baseurl  => $_repo_location,
+            gpgcheck => '1',
+            gpgkey   => $gpgkey_zabbix,
+            priority => '1',
+          }
+        }
+
         $_unsupported_repo_location = $unsupported_repo_location ? {
           undef   => "https://repo.zabbix.com/non-supported/rhel/${majorrelease}/\$basearch/",
           default => $unsupported_repo_location,

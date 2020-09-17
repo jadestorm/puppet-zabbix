@@ -340,6 +340,19 @@ class zabbix::web (
     default: {
       $zabbix_web_package = 'zabbix-web'
 
+      case $zabbix_version {
+        '5.0': {
+          if $facts['os']['family'] == 'RedHat' and $facts['os']['version']['major'] == 7 {
+            $zabbix_web_db_package = "zabbix-web-${db}-scl"
+          }
+          else {
+            $zabbix_web_db_package = "zabbix-web-${db}"
+          }
+        }
+        default: {
+          $zabbix_web_db_package = "zabbix-web-${db}"
+        }
+      }
       package { "zabbix-web-${db}":
         ensure  => $zabbix_package_state,
         before  => Package[$zabbix_web_package],
