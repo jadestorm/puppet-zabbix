@@ -79,7 +79,7 @@ class zabbix::repo (
           priority => '1',
         }
 
-        if $zabbix_version == '5.0' {
+        if $zabbix_version =~ /^5/ {
           yumrepo { 'zabbix-frontend':
             name     => "Zabbix_frontend_${majorrelease}_${facts['os']['architecture']}",
             descr    => "Zabbix_frontend_${majorrelease}_${facts['os']['architecture']}",
